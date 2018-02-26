@@ -1,0 +1,37 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Compare Github repositories API",
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/customer/{customerId}/rate": {
+            "get": {
+                "summary": "List user githubs respositories",
+                "operationId": "userRepositories",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "User Github login.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}
