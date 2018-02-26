@@ -34,8 +34,4 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-    
-    'github' => [
-        'apikey' => '8295873b1ce3469df65db49b67f1cc75b3c3169e'
-    ]
 ];
