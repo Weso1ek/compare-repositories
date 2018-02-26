@@ -28,13 +28,13 @@ class CompareController extends Controller {
         
         $results = [];
         if(!empty($first_repository)) {
-            $results['first'] = $this->getRepositoryInfo($first_repository);
+            $results[] = $this->getRepositoryInfo($first_repository);
         }
         
         if(!empty($second_repository)) {
-            $results['second'] = $this->getRepositoryInfo($second_repository);
+            $results[] = $this->getRepositoryInfo($second_repository);
         }
-        return view('compare/results', $results);
+        return view('compare/results', ['results' => $results]);
     }
     
     /**
