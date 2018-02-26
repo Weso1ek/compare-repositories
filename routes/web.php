@@ -16,4 +16,6 @@ Route::post('/compare', 'CompareController@compare');
 
 Route::group(['prefix' => '/api/v1'], function () {
         Route::get('user/repositories/{user}', 'ApiController@userRepositories');
+        Route::get('user/{user}', 'ApiController@getUser');
+        Route::get('repository/{user}/{name}', 'ApiController@getRepository');
 });        

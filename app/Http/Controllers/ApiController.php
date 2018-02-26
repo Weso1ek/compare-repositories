@@ -30,7 +30,7 @@ class ApiController extends Controller {
     
     /**
      * @SWG\Get(
-     *   path="/customer/{customerId}/rate",
+     *   path="user/repositories/{user}",
      *   summary="List user githubs respositories",
      *   operationId="userRepositories",
      *   @SWG\Parameter(
@@ -50,4 +50,57 @@ class ApiController extends Controller {
         $repositiories = $this->githubClient->api('user')->repositories($user);
         return response()->json($repositiories);
     }
+    
+    /**
+     * @SWG\Get(
+     *   path="user/{user}",
+     *   summary="Show user information",
+     *   operationId="userUser",
+     *   @SWG\Parameter(
+     *     name="user",
+     *     in="query",
+     *     description="User Github login.",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
+     * )
+     *
+     */
+    public function getUser($user) {
+        $repositiories = $this->githubClient->api('user')->show($user);
+        return response()->json($repositiories);
+    }
+    
+    /**
+     * @SWG\Get(
+     *   path="repository/{user}/{name}",
+     *   summary="Repository information",
+     *   operationId="getRepository",
+     *   @SWG\Parameter(
+     *     name="user",
+     *     in="query",
+     *     description="User Github login.",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="name",
+     *     in="query",
+     *     description="Repository name.",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=406, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
+     * )
+     *
+     */
+    public function getRepository($user, $name) {
+        $repository = $this->githubClient->api('repo')->show($user, $name);
+        return response()->json($repository);
+    }    
 }

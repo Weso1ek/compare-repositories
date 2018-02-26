@@ -6,7 +6,7 @@
     },
     "basePath": "/api/v1",
     "paths": {
-        "/customer/{customerId}/rate": {
+        "user/repositories/{user}": {
             "get": {
                 "summary": "List user githubs respositories",
                 "operationId": "userRepositories",
@@ -15,6 +15,65 @@
                         "name": "user",
                         "in": "query",
                         "description": "User Github login.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "user/{user}": {
+            "get": {
+                "summary": "Show user information",
+                "operationId": "userUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "User Github login.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "repository/{user}/{name}": {
+            "get": {
+                "summary": "Repository information",
+                "operationId": "getRepository",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "User Github login.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Repository name.",
                         "required": true,
                         "type": "string"
                     }
