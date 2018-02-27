@@ -34,10 +34,6 @@ class CompareController extends Controller {
         if(!empty($second_repository)) {
             $results[] = $this->getRepositoryInfo($second_repository);
         }
-        
-        var_dump($results);die();
-        
-        
         return view('compare/results', ['results' => $results]);
     }
     
