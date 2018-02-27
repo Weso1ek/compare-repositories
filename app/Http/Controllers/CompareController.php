@@ -34,6 +34,10 @@ class CompareController extends Controller {
         if(!empty($second_repository)) {
             $results[] = $this->getRepositoryInfo($second_repository);
         }
+        
+        var_dump($results);die();
+        
+        
         return view('compare/results', ['results' => $results]);
     }
     
@@ -67,6 +71,8 @@ class CompareController extends Controller {
         }
 
         $repositoryInfo = $this->githubClient->api('repo')->show($username, $repositoryName);
+        $repositoryInfo['pull_requests'] = $this->githubClient->api('pull_request')->all($username, $repositoryName, array('state' => 'open'));
+        $repositoryInfo['pull_requests_closed'] = $this->githubClient->api('pull_request')->all($username, $repositoryName, array('state' => 'closed'));
         return $repositoryInfo;
     }
 }

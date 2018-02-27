@@ -67,6 +67,14 @@
                                                 <td><strong>Open issues:</strong></td>
                                                 <td><?=$result['open_issues_count'];?></td>
                                             </tr>
+                                            <tr>
+                                                <td><strong>Pull requests open:</strong></td>
+                                                <td><?=count($result['pull_requests']);?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Pull requests closed:</strong></td>
+                                                <td><?=count($result['pull_requests_closed']);?></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </td>
